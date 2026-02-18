@@ -1,4 +1,4 @@
-AI-Powered Job Portal "HireHeaven"
+## AI-Powered Job Portal "HireHeaven"
 
 ## Scope
 HireHeaven is a modern job portal designed to bridge the gap between job seekers and recruiters. It goes beyond simple job listings by integrating AI-based resume analysis, real-time notifications, for enhanced visibility and features. The platform is built for scalability using Next.js for the frontend and a suite of Node.js/Express services (Auth, Job, User, Payment) backed by a PostgreSQL database.

@@ -1,3 +1,20 @@
-.DS_Store*
+# dependencies
+node_modules/
+
+# env files
+.env
+.env.local
+.env.production
+
+# build output
+dist/
+.next/
+
+# OS
 .DS_Store
 
+# seed scripts
+seed.mjs
+
+# lock files (optional - remove this line if you want to track them)
+package-lock.json

@@ -100,7 +100,7 @@ const Company = () => {
       clearData();
       fetchCompanies();
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setBtnLoading(false);
     }
@@ -122,7 +122,7 @@ const Company = () => {
         toast.success(data.message);
         fetchCompanies();
       } catch (error: any) {
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data?.message || "Something went wrong");
       } finally {
         setBtnLoading(false);
       }

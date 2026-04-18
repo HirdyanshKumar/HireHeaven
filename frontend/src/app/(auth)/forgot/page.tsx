@@ -27,7 +27,7 @@ const ForgotPage = () => {
       toast.success(data.message);
       setemail("");
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setbtnLoading(false);
     }

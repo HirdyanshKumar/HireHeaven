@@ -129,7 +129,7 @@ const CompanyPage = () => {
       addModalRef.current?.click();
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setBtnLoading(false);
     }
@@ -148,7 +148,7 @@ const CompanyPage = () => {
         toast.success("Job has been deleted");
         fetchCompany();
       } catch (error: any) {
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data?.message || "Something went wrong");
       } finally {
         setBtnLoading(false);
       }
@@ -206,7 +206,7 @@ const CompanyPage = () => {
       fetchCompany();
       handleCloseUpdateModal();
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setBtnLoading(false);
     }

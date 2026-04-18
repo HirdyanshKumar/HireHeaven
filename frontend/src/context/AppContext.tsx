@@ -6,11 +6,13 @@ import toast, { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-export const utils_service = process.env.NEXT_PUBLIC_UTILS_SERVICE || "http://localhost:5001";
-export const auth_service = process.env.NEXT_PUBLIC_AUTH_SERVICE || "http://localhost:5000";
-export const user_service = process.env.NEXT_PUBLIC_USER_SERVICE || "http://localhost:5002";
-export const job_service = process.env.NEXT_PUBLIC_JOB_SERVICE || "http://localhost:5003";
-export const payment_service = process.env.NEXT_PUBLIC_PAYMENT_SERVICE || "http://localhost:5004";
+const sanitizeUrl = (url: string) => url.replace(/\/api\/?$/, "").replace(/\/$/, "");
+
+export const utils_service = sanitizeUrl(process.env.NEXT_PUBLIC_UTILS_SERVICE || "http://localhost:5001");
+export const auth_service = sanitizeUrl(process.env.NEXT_PUBLIC_AUTH_SERVICE || "http://localhost:5000");
+export const user_service = sanitizeUrl(process.env.NEXT_PUBLIC_USER_SERVICE || "http://localhost:5002");
+export const job_service = sanitizeUrl(process.env.NEXT_PUBLIC_JOB_SERVICE || "http://localhost:5003");
+export const payment_service = sanitizeUrl(process.env.NEXT_PUBLIC_PAYMENT_SERVICE || "http://localhost:5004");
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -56,7 +58,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       toast.success(data.message);
       fetchUser();
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -78,7 +80,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       toast.success(data.message);
       fetchUser();
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -99,7 +101,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       toast.success(data.message);
       fetchUser();
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setBtnLoading(false);
     }
@@ -131,7 +133,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       setSkill("");
       fetchUser();
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setBtnLoading(false);
     }
@@ -171,7 +173,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       toast.success(data.message);
       fetchApplications();
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setBtnLoading(false);
     }
